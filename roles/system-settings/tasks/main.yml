@@ -1,0 +1,50 @@
+- name: Creates directory for CrateDB data
+  file:
+    path: "{{ cratedb_vol }}/crateDB/data"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+    recurse: yes
+
+- name: Creates directory for CrateDB config
+  file:
+    path: "{{ cratedb_vol }}/crateDB/config"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+    recurse: yes
+
+
+- name: copy template crate.yml CrateDB config file
+  template:
+    src: crate.yml.j2
+    dest: "{{ cratedb_vol }}/crateDB/config/crate.yml"
+    owner: root
+    group: root
+    mode: 0755
+    backup: yes
+
+
+
+- name: append line to /etc/security/limits.conf file
+  lineinfile: dest=/etc/security/limits.conf
+              line='{{item}}'
+  with_items:
+    - crate soft nofile unlimited
+    - crate hard nofile unlimited
+    - crate soft memlock unlimited
+    - crate hard memlock unlimited
+    - crate soft nproc 2048
+    - crate hard nproc 2048
+    - crate soft as unlimited
+    - crate hard as unlimited
+
+# Set ip vm.max_map_count on in /proc and in the sysctl file and reload if necessary
+- sysctl:
+    name: vm.max_map_count
+    value: 262144
+    sysctl_set: yes
+    state: present
+    reload: yes

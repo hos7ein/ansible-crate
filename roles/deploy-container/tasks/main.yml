@@ -1,0 +1,32 @@
+- name: Deploy CrateDB docker container
+  docker_container:
+        name: "{{ container_name }}"
+        hostname: "{{ hostname }}"
+        image: docker.io/crate
+        networks:
+          - name: "{{ docker_network }}"
+        published_ports:
+          - "{{ host_http_port }}:4200"
+          - "{{ host_transport_tcp_port }}:4300"
+          - "{{ hosts_psql_port }}:5432"
+        volumes:
+          - "{{ cratedb_vol }}/crateDB/data:/data"
+          - "{{ cratedb_vol }}/crateDB/config/crate.yml:/crate/config/crate.yml"
+        restart_policy: always
+        env:
+          CRATE_HEAP_SIZE: "{{ CRATE_HEAP_SIZE }}"
+
+        command: crate -Cnetwork.host=_site_
+
+
+- name: Open port on firewalld
+  firewalld:
+    port: "{{item}}/tcp"
+    permanent: true
+    state: enabled
+    zone: public
+    immediate: true
+  with_items:
+    - "{{ host_http_port }}"
+    - "{{ host_transport_tcp_port }}"
+    - "{{ hosts_psql_port }}"

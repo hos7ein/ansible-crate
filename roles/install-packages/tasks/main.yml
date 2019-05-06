@@ -1,0 +1,13 @@
+---
+- name : install epel repo
+  yum: name=epel-release state=latest
+
+- name : install packages
+  yum:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - docker
+
+- name: start and enable docker service
+  systemd: state=started enabled=yes name=docker

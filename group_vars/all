@@ -1,0 +1,22 @@
+---
+# Variables listed here are applicable to all host groups
+
+
+#set path for storing crateDB Data
+cratedb_vol: /opt
+password: my-password
+cluster_name: crate
+node_name: cratedb_node_1
+
+container_name: cratedb01
+hostname: CrateDB
+
+
+docker_network: host
+
+#Ports
+host_http_port: 4200
+host_transport_tcp_port: 4300
+hosts_psql_port: 5432
+
+CRATE_HEAP_SIZE: 4g
