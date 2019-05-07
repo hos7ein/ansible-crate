@@ -3,8 +3,7 @@
         name: "{{ container_name }}"
         hostname: "{{ hostname }}"
         image: docker.io/crate
-        networks:
-          - name: "{{ docker_network }}"
+        network_mode: "{{ docker_network_name }}"
         published_ports:
           - "{{ host_http_port }}:4200"
           - "{{ host_transport_tcp_port }}:4300"
