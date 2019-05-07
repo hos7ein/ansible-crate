@@ -4,6 +4,8 @@
 
 #set path for storing crateDB Data
 cratedb_vol: /opt
+
+#crateDB configs
 password: my-password
 cluster_name: crate
 node_name: cratedb_node_1
@@ -11,8 +13,8 @@ node_name: cratedb_node_1
 container_name: cratedb01
 hostname: CrateDB
 
-
-docker_network: host
+# Set Docker network mode
+docker_network_name: host
 
 #Ports
 host_http_port: 4200
