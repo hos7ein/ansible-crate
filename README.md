@@ -1,6 +1,9 @@
 # ansible-crate
 --------------
 
+
+[![crate.io](https://raw.githubusercontent.com/hos7ein/ansible-crate/dev/pic/CrateDB.jpg)](https://crate.io)  [![ansible](https://raw.githubusercontent.com/hos7ein/ansible-crate/dev/pic/ansible.png)](https://ansible.com) [![docker](https://raw.githubusercontent.com/hos7ein/ansible-crate/dev/pic/docker.png)](https://docker.com)
+
 ### Introduction ###
 CrateDB is a distributed SQL database management system that integrates a fully searchable document oriented data store. It is open-source, written in Java, based on a shared nothing architecture, and is designed for high scalability and includes components from Facebook Presto, Apache Lucene, Elasticsearch and Netty.
 To fast deploy of CrateDB on server/s, I wrote `ansible-crate` project by Ansible. In this project, CrateDB will automatic deploy with Docker.
