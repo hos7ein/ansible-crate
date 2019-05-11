@@ -1,0 +1,6 @@
+- hosts: crateDB-servers
+  remote_user: root
+  roles:
+  - install-packages
+  - system-settings
+  - deploy-container

@@ -1,0 +1,19 @@
+# Crate Configuration
+
+network.host: _local_,_site_
+
+# Paths
+path:
+  logs: /data/log
+  data: /data/data
+blobs:
+  path: /data/blobs
+
+cluster.name: {{ cluster_name }}
+node.name: "{{ node_name }}"
+
+#user: crate
+#password: {{ password }}
+auth:
+  trust:
+    http_default_user: {{ password }}

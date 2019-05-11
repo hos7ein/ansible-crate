@@ -1,0 +1,7 @@
+---
+- name : install packages
+  yum:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - python-docker-py
