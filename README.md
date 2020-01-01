@@ -9,7 +9,7 @@ CrateDB is a distributed SQL database management system that integrates a fully 
 To fast deploy of CrateDB on server/s, I wrote `ansible-crate` project by Ansible. In this project, CrateDB will automatic deploy with Docker.
 
 ### Dependency ###
-To use `ansible-crate` project you have need some packages for deploying it, in your Ansible machine you need this package:
+To use `ansible-crate` project you need some packages for deploying it, in your Ansible machine you need this package:
 
 * ansible
 
@@ -27,7 +27,7 @@ After that set information of your environment in variable file:
 vi group_vars/all
 ```
 
-Now for run Ansible Playbook you should run the beneath command:
+Now for running Ansible Playbook you should run the beneath command:
 
 ```
 ansible-playbook -i hosts main-playbook.yml
@@ -45,4 +45,4 @@ ansible-playbook -i hosts main-playbook.yml
 
 ## License
 
-ansible-ocserv source code is available under the GPL-3.0 [License](/LICENSE).
+ansible-crate source code is available under the GPL-3.0 [License](/LICENSE).
